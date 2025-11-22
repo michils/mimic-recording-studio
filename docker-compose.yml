@@ -1,22 +1,48 @@
 version: '3'
 services:
   backend:
-    container_name: mrs-backend
+    container_name: mrs-backend-michils
     build:
       context: ./backend/
     ports:
      - "5000:5000"
-    volumes: 
+    volumes:
      - ./backend/:/src
     environment:
     - CORPUS=english_corpus.csv
     - APIPORT=5000
     - WEBWORKERS=1
   frontend:
-    container_name: mrs-frontend
+    container_name: mrs-frontend-michils
     build:
       context: ./frontend/
     ports:
      - "3000:3000"
     volumes:
      - ./frontend/:/src
+
+  db:
+    image: mariadb:latest
+    container_name: mariadb-michils
+    environment:
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_DATABASE: mrsdb
+    ports:
+      - "3306:3306"
+    volumes:
+      - mariadb_data:/var/lib/mysql
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    ports:
+      - "8080:80"
+    environment:
+      PMA_HOST: db
+      PMA_PORT: 3306
+      PMA_USER: root
+      PMA_PASSWORD: secret
+    depends_on:
+      - db
+
+volumes:
+  mariadb_data:
