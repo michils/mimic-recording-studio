@@ -12,29 +12,24 @@ class Intro extends Component {
   }
 
   componentDidMount() {
-    const name = getName();
-    if (name) {
-      this.setState({ name });
-    }
+    //const name = getName();
+    //if (name) {
+     // this.setState({ name });
+    //}
+    this.setState({name: "Tilly"});
   }
 
   render() {
     return (
       <div className="page-intro">
         <div id="PageIntro">
-          <h2 style={{ color: "#FD9E66" }}>Mimic Recording Studio</h2>
-          <h1>Help us build the voice(s) of Mycroft!</h1>
+          <h2 style={{ color: "#FD9E66" }}>Michils - Mimic Recording Studio</h2>
+          <h1>Das hier ist Vaddern's Voice-Projekt!</h1>
           <p>
-            Mycroft's open source Mimic technologies are Text-to-Speech engines,
-            which take a piece of written text and convert it into spoken audio.
-            The latest generation of this technology uses machine learning
-            techniques to create a model, which can speak a specific language,
-            sounding like the voice on which it was trained.
+	    Du findest das Projekt auf https://github.com/michils/mimic-recording-studio.git!
           </p>
           <p>
-            The Mimic Recording Studio simplifies the collection of training data from
-            individuals, each of which can be used to produce a distinct voice
-            for Mimic.
+	    Dies Projekt hilft dabei, mit einfachen Mitteln die Stimme aufzunehmen und im LSPeech-Format vorzubereiten. Anschliessend kann dann ein Sprachmodell damit trainiert werden.
           </p>
 
           <div className="instructions">
