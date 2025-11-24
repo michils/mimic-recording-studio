@@ -9,9 +9,11 @@ services:
     volumes:
      - ./backend/:/src
     environment:
-    - CORPUS=english_corpus.csv
+    - CORPUS=german_corpus.csv
     - APIPORT=5000
     - WEBWORKERS=1
+
+
   frontend:
     container_name: mrs-frontend-michils
     build:
@@ -27,6 +29,8 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: secret
       MYSQL_DATABASE: mrsdb
+      MYSQL_USER: dbuser
+      MYSQL_PASSWORD: dbuser
     ports:
       - "3306:3306"
     volumes:
