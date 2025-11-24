@@ -6,8 +6,20 @@ import os
 import datetime
 from .protocol import response
 from .audio import Audio
+
+from peewee import MySQLDatabase
+import pymysql
+
+pymysql.install_as_MySQLdb()  # PyMySQL als MySQLdb-Ersatz registrieren
+
+#from peewee import (
+#    Model, SqliteDatabase, CharField, IntegerField,
+#    DateTimeField, ForeignKeyField, DoesNotExist, FloatField,
+#    AutoField
+#)
+
 from peewee import (
-    Model, SqliteDatabase, CharField, IntegerField,
+    Model, MySQLDatabase, CharField, IntegerField,
     DateTimeField, ForeignKeyField, DoesNotExist, FloatField,
     AutoField
 )
@@ -21,11 +33,19 @@ mimic_studio_dir = os.path.join(
 os.makedirs(mimic_studio_dir, exist_ok=True)
 mimic_studio_db_path = os.path.join(
     mimic_studio_dir,
-    "mimicstudio.db"
+    "michilsmimicstudio.db"
 )
 
 # setting up and db
-mimic_studio_db = SqliteDatabase(mimic_studio_db_path)
+#mimic_studio_db = SqliteDatabase(mimic_studio_db_path)
+# Änderung der DB nach MariaDB
+mimic_studio_db = MySQLDatabase(
+   'mrsdb',
+   user='dbuser',
+   password='dbuser',
+   host='db', # Docker-Compose Service-Name oder IP
+   port=3306
+)
 
 
 class UserModel(Model):
