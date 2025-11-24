@@ -1,4 +1,4 @@
-# THis michils MRS-Klone from November 2025
+# This  is michils MRS-Klone from November 2025
 # Mimic Recording Studio
 
 ![demo](./img/demo.gif)
