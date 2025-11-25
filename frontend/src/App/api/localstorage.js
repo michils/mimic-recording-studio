@@ -13,6 +13,9 @@ function guid() {
 export const saveName = (name) => {
     storage.setItem('name', name)
 }
+export const saveUuid = (uuid) => {
+    storage.setItem('uuid', uuid)
+}
 
 export const getName = () => {
     return storage.getItem('name')
