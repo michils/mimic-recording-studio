@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 // import { history } from "react-router-dom";
-import { getName, saveName } from "./api/localstorage";
+import { getName, saveName, saveUuid } from "./api/localstorage";
 
 class Intro extends Component {
   constructor(props) {
@@ -15,8 +15,10 @@ class Intro extends Component {
     //const name = getName();
     //if (name) {
      // this.setState({ name });
-    //}
+    //
     this.setState({name: "Tilly"});
+    saveUuid("34ff85e5-c387-ce30-84d1-b19a2f642cd9");
+    saveName("Tilly");
   }
 
   render() {
@@ -94,7 +96,7 @@ class Intro extends Component {
               <li>Record error free.</li>
               </ul>
 
-              <span className="li-title">Happy recording :-)</span>
+              <span className="li-title">Viel Erfolg bei der Aufnahme! :-)</span>
 
           </div>
           {getName() ? this.renderWelcomeBackMsg() : this.renderInput()}
